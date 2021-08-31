@@ -228,6 +228,10 @@ export class MainComponent  {
                     let current = ryber.googleMaps.marker.getPosition()
                     let lat = current.lat()
                     let lng = current.lng()
+                    if(result !== "waiting"){
+                        analytics.track(result)
+                    }
+
                     switch (result) {
                         case "up":
                             lat += .0005

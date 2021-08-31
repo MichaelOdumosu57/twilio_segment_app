@@ -9,7 +9,8 @@ import { delay,tap } from 'rxjs/operators';
 declare global{
     var Prism:any;
     var google:any;
-    var SlidingMarker:any
+    var SlidingMarker:any;
+    var analytics:any;
 }
 @Component({
     selector: 'app-root',
