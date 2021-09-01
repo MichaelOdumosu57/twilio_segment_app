@@ -19,7 +19,7 @@ app.config.update(
     FLASK_ENV = 'production',
     SECRET_KEY=os.environ.get("FLASK_SOCKET_IO_SECRET_KEY")
 )
-sio = SocketIO(app,cors_allowed_origins="*")
+sio = SocketIO(app,cors_allowed_origins="https://michaelodumosu57.github.io")
 
 @sio.event
 def connect():

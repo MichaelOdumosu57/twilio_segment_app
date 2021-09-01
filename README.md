@@ -2,10 +2,8 @@
 
 
 # Summary
-* app is a self facing app, if your avaible the call will go through if you are not avaible the call will be blocked
-you enter your number and you fill the simple interactive app form
-* implements segment, by every interaction you make it gets sent to segment
-
+* it is an interactive game that you use with your phone to text directions to the twillio number
+* there are 3 eggs once you get all the eggs you have one the game
 ## Features include 
 Only members of the project can read the README.md from the ignore folder
 
@@ -15,30 +13,29 @@ Only members of the project can read the README.md from the ignore folder
 * Angular v12.2.3
 * marker-animate-unobtrusive v 0.2.9
 * Google maps js sdk v3.0.0
+* socket.io-client: 4.2.0
 ## Backend
 * python v3.9.6
 * flask 2.0.1
 * Flask-SocketIO==5.1.1
 * gunicorn==20.1.0
 * pyngrok==5.1.0
+* gevent 21.8.0
 
 ## Testing
 * Docker, (tes in docker containers from linux VM) v20.10.7
 
 ### Unit
-* rspec    v3.10.0
-* capybara v3.35.3
+
 
 ### Integration
-* rspec    v3.10.0
-* capybara v3.35.3
 
 ### E2E
-* rspec    v3.10.0
-* capybara v3.35.3
-* puffing billy v2.4.1
+
 
 ## Hosting
+* frontend: GH Pages
+* backend: Heroku
 
 ### CMS
 
@@ -47,7 +44,7 @@ Only members of the project can read the README.md from the ignore folder
 ## CI/CD
 
 ## Communication
-Trello
+
 
 
 # Structure
@@ -97,7 +94,11 @@ part 2
 ### Frotend
 #### Configurations
 
+
+#### Intro
+* teaches user how to play the game
 #### HomePage
+* user interacts with the game
 
 ### Backend
 
@@ -132,15 +133,19 @@ refer to README.md in ignore
 * make sure the external google lib is on the DOM
 
 ## Mistakes/Failures
+ * difficulty implementing flask socket io and gunicorn
 
 ## Enjoyed
+* there is a community behind flask, I dont have to build the watchdog and sockietio logic myself, with a few patches we have a flask socketio server running 
 
 ## Leadership
 
 ## Conflict
+* whether take take the sec vuln of eventlet or use gevent
 
 
 ## Done Different
+* impletemnted socket io earlier
 
 
 # Issues 
