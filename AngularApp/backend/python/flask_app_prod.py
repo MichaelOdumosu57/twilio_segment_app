@@ -57,5 +57,6 @@ def get_dir():
         return "waiting"
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
+def start_app():
     app.run(debug=True)
