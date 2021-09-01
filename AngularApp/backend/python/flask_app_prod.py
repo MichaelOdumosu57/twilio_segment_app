@@ -11,8 +11,10 @@ from twilio.twiml.messaging_response import MessagingResponse
 #
 
 app = Flask(__name__)
+PORT = os.environ.get("PORT")
+PORT = PORT if PORT else 3005
 app.config.update(
-    SERVER_NAME="127.0.0.1:3005",
+    SERVER_NAME="127.0.0.1:{}".format(PORT),
     FLASK_ENV = 'production'
 )
 
