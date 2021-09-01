@@ -19,7 +19,7 @@ app.config.update(
     FLASK_ENV = 'production',
     SECRET_KEY=os.environ.get("FLASK_SOCKET_IO_SECRET_KEY")
 )
-sio = SocketIO(app,cors_allowed_origins=os.environ.get('FRONTEND_ORIGIN'))
+sio = SocketIO(app,cors_allowed_origins="*")
 
 @sio.event
 def connect():
@@ -46,7 +46,7 @@ def map_game():
     global current
     global use
     current = body
-    sio.emit('direction',current)
+    sio.emit('direction',{'data':current})
     use = True
 
     # Add a message
