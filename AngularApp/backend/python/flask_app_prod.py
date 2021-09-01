@@ -5,6 +5,7 @@ elif sys.platform =="linux":
     sys.path.append(sys.path[0] + "/site-packages/linux")
 from flask import Flask, request, redirect
 import os
+from flask_sio import SocketIO
 
 # dev additions
 from twilio.twiml.messaging_response import MessagingResponse
@@ -15,9 +16,14 @@ PORT = os.environ.get("PORT")
 PORT = PORT if PORT else 3005
 app.config.update(
     # SERVER_NAME="127.0.0.1:{}".format(PORT),
-    FLASK_ENV = 'production'
+    FLASK_ENV = 'production',
+    SECRET_KEY='vnkdjnfjknfl1232#'
 )
+sio = SocketIO(app)
 
+@sio.event
+def connect():
+    print("connected")
 
 @app.after_request
 def after_request(response):
@@ -40,6 +46,7 @@ def map_game():
     global current
     global use
     current = body
+    sio.emit(current)
     use = True
 
     # Add a message

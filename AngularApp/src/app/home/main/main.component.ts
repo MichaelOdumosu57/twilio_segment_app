@@ -4,6 +4,7 @@ import { fromEvent, Subscription,of, Subject } from 'rxjs';
 import { switchMap, take,tap,delay, exhaustMap,repeat, catchError, retry } from 'rxjs/operators';
 import { RyberService } from 'src/app/ryber.service';
 import { environment as env } from 'src/environments/environment';
+import { io } from 'socket.io-client';
 
 @Component({
     selector: 'app-main',
@@ -214,6 +215,10 @@ export class MainComponent  {
         }
         //
 
+        // setup client socket for poll
+        let clientIo = ryber.socket.client =io(env.backend.url)
+        //
+
         // poll the direction endpoint to see which endpoint our marker should go
             // once we get to the destination then ok
 
@@ -233,7 +238,7 @@ export class MainComponent  {
                         analytics.track(result)
                     }
 
-                    switch (result) {
+                    switch (result.trim().toLowerCase()) {
                         case "up":
                             lat += .0005
                             break;

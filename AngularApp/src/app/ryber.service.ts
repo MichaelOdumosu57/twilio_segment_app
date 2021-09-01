@@ -136,4 +136,8 @@ export class RyberService {
         eggs:null
 
     }
+
+    socket:any= {
+        client:null
+    }
 }

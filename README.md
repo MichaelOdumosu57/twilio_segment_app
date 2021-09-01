@@ -18,6 +18,9 @@ Only members of the project can read the README.md from the ignore folder
 ## Backend
 * python v3.9.6
 * flask 2.0.1
+* Flask-SocketIO==5.1.1
+* gunicorn==20.1.0
+* pyngrok==5.1.0
 
 ## Testing
 * Docker, (tes in docker containers from linux VM) v20.10.7
@@ -175,6 +178,7 @@ Session 5 (Logging)
 [allow twilio to call you based on events](https://www.twilio.com/blog/creating-a-simple-voicemail-with-javascript-and-google-calendar?utm_source=youtube&utm_medium=video&utm_campaign=project_saiyan&utm_content=never_miss_a_call)
 [use flask with classs](https://stackoverflow.com/a/40466535/7513181)
 [deploy flask app to heroku](https://www.youtube.com/watch?v=Li0Abz-KT78)
+[flask app sockietio](https://codeburst.io/building-your-first-chat-application-using-flask-in-7-minutes-f98de4adfa5d)
 ## Snippets
 * general snippets found in planning in the trello workspace
 
