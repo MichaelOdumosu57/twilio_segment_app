@@ -1,2 +1,2 @@
-web: gunicorn flask_app_prod
+web: gunicorn flask_app_prod --preload -b 0.0.0.0:3005
 heroku ps:scale web=1
