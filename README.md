@@ -179,6 +179,7 @@ Session 5 (Logging)
 [use flask with classs](https://stackoverflow.com/a/40466535/7513181)
 [deploy flask app to heroku](https://www.youtube.com/watch?v=Li0Abz-KT78)
 [flask app sockietio](https://codeburst.io/building-your-first-chat-application-using-flask-in-7-minutes-f98de4adfa5d)
+[eventlet issue](https://stackoverflow.com/a/67429430/7513181)
 ## Snippets
 * general snippets found in planning in the trello workspace
 
