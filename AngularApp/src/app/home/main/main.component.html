@@ -35,4 +35,9 @@ class="a_p_p_HomePod0"
     #homeMap
     class="a_p_p_HomePod0Map"
     ></div>
+    <h1 *ngIf="ryber.googleMaps.eggsCollected !== 3">Eggs Collected : {{ryber.googleMaps.eggsCollected}}</h1>
+    <h1 *ngIf="ryber.googleMaps.eggsCollected === 3">You Have Won the Game</h1>
+    <button
+    (click)="instruct.click($event)"
+    class="a_p_p_HomePod0Instruct">Instrcutions</button>
 </div>

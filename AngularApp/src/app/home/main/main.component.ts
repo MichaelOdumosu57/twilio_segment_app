@@ -13,7 +13,7 @@ import { io } from 'socket.io-client';
 })
 export class MainComponent  {
 
-    //metadata
+//metadata
     @HostBinding('class') myClass: string = "a_p_p_HomeView";
     subs: Subscription[] = [];
     @ViewChild('homeMap') myHomeMap:HTMLDivElement
@@ -129,8 +129,14 @@ export class MainComponent  {
         },
     }
 
+    instruct = {
+        click:(evt:Event)=>{
+            this.ryber.router.navigateByUrl("/")
+        }
+    }
+
     constructor(
-        private ryber:RyberService,
+        public ryber:RyberService,
         private ref:ChangeDetectorRef
     ) { }
 
@@ -196,7 +202,6 @@ export class MainComponent  {
         // setup gogole maps
         let gScriptEvent:Subscription
         if(window.google){
-            console.log("loaded")
             ryber.googleMaps.setup({
                 map:myHomeMap
             })
@@ -221,17 +226,20 @@ export class MainComponent  {
 
         // poll the direction endpoint to see which endpoint our marker should go
             // once we get to the destination then ok
-
+        ryber.googleMaps.eggsCollected  = 0
+        ref.detectChanges()
         clientIo.on("direction",(devObj)=>{
-            let result =devObj.data
+            let result =devObj.data.trim().toLowerCase()
             let current = ryber.googleMaps.marker.getPosition()
             let lat = current.lat()
             let lng = current.lng()
-            if(result !== "waiting"){
+            if(["up","down","left","right"].includes(result)){
+                // use of segment to track direction decisions
                 analytics.track(result)
+                //
             }
 
-            switch (result.trim().toLowerCase()) {
+            switch (result) {
                 case "up":
                     lat += .0005
                     break;
@@ -251,53 +259,35 @@ export class MainComponent  {
                 default:
                     break;
             }
+
             ryber.googleMaps.marker.setPosition({lat,lng})
+            // current = ryber.googleMaps.marker.getPosition()
+            // console.log(current.lat(),current.lng())
+
+            // if we arrived at an egg update the state
+            ryber.googleMaps.eggs
+            .forEach((x:any,i)=>{
+                let egg = x.getPosition()
+
+
+                current = ryber.googleMaps.marker.getPosition()
+                console.log( current.lat(),current.lng())
+                lat = Math.abs(egg.lat() - current.lat())
+                lng = Math.abs(egg.lng() -current.lng())
+                // console.log(lat,lng,1e-16)
+                if(
+                    lat < 1e-13 &&
+                    lng < 1e-13
+                ){
+                    ryber.googleMaps.eggsCollected += 1
+                    x.setMap(null);
+                    ref.detectChanges()
+                }
+
+            })
+            //
         })
-            let pollEvent = ryber.http.get(
-                env.backend.url + "/direction",
-                {responseType:"text"}
-            )
-            .pipe(
-                delay(1000),
-                retry(5),
-                repeat(Infinity),
-                tap((result)=>{
-                    let current = ryber.googleMaps.marker.getPosition()
-                    let lat = current.lat()
-                    let lng = current.lng()
-                    if(result !== "waiting"){
-                        analytics.track(result)
-                    }
 
-                    switch (result.trim().toLowerCase()) {
-                        case "up":
-                            lat += .0005
-                            break;
-
-                        case "down":
-                            lat -= .0005
-                            break;
-
-                        case "left":
-                            lng -= .0005
-                            break;
-
-                        case "right":
-                            lng += .0005
-                            break;
-
-                        default:
-                            break;
-                    }
-                    ryber.googleMaps.marker.setPosition({lat,lng})
-                }),
-                catchError((err)=>{
-                    alert("There seems to be any issue with the app try again later")
-                    return of({})
-                })
-            )
-            // .subscribe()
-            // subs.push(pollEvent)
         //
     }
 

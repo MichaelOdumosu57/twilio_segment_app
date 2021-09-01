@@ -7,18 +7,18 @@ const routes: Routes = [
     //     // loadChildren: () => import('./scratchpad/scratchpad.module').then(m => m.ScratchpadModule)
     // },
     {
-        path:'home',
+        path: 'home',
         loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
     },
     {
         path: '',
-        loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
-      }
+        loadChildren: () => import('./intro/intro.module').then(m => m.IntroModule)
+    }
 ]; // sets up routes constant where you define your routes
 
 // configures NgModule imports and exports
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

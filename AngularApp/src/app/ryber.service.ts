@@ -109,13 +109,13 @@ export class RyberService {
                 duration:1500,
             });
 
-            googleMaps.eggs = Array(4).fill(null)
+            googleMaps.eggs = Array(3).fill(null)
             .map((x:any,i)=>{
                 return new SlidingMarker({
                     position: [
                         {lat:40.718,lng:-73.903},
                         {lat:40.721,lng:-73.905},
-                        {lat:40.7198,lng:-73.901},
+                        {lat:40.720000000000006,lng:-73.901},
                     ][i],
                     map: googleMaps.map,
                     draggable: true,
@@ -128,12 +128,14 @@ export class RyberService {
             // for the oddest reason this map fn wont allow my markers to be seen
 
             //
-            console.log(googleMaps.eggs)
+
 
         },
         map:null,
         marker:null,
-        eggs:null
+        eggs:null,
+        eggsCollected:0,
+        
 
     }
 

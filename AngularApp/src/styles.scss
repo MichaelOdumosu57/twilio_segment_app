@@ -54,6 +54,41 @@
 
     }
 
+    &Intro{
+        &View{
+            @include view;
+            padding:40px 0;
+            font-size: 9px;
+
+            * {
+                margin: 20px 0 0 0;
+            }
+            h1{
+                font-size:5em;
+                @include tac;
+            }
+
+            h2{
+                font-size:4em;
+                @include tac;
+            }
+
+            ul {
+                font-size:3em;
+                margin:10px 0 0 0;
+            }
+
+            button{
+                font-size:6em;
+                border-radius: 30px;
+                padding:20px 100px;
+                background:var(--radial-bg-blue)
+            }
+
+
+        }
+    }
+
     &Home{
         &View{
             display: flex;
@@ -72,30 +107,22 @@
             width: 100%;
 
             & *{
-                color:white;
+                // color:white;
             }
 
-
-            &Option{
-                &0{
-                    background: var(--radial-bg-lightbrown);
-                }
-
-                &1{
-                    background: var(--radiial-bg-ripebanana);
-                }
-
-                &2{
-                    background: var(--radial-bg-purple);
-                }
-
+            &Instruct{
+                background: var(--radial-bg-green);
+                margin:0 100px 0 100px;
+                padding:0 100px;
+                border-radius: 30px;
+                font-size:36px;
             }
 
             &Map{
                 background: var(--radial-bg-skyblue);
                 margin:30px 0 0 0 ;
                 height:600px;
-                flex : 0 0 80%;
+                flex : 0 0 90%;
             }
         }
     }
