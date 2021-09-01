@@ -17,7 +17,7 @@ PORT = PORT if PORT else 3005
 app.config.update(
     # SERVER_NAME="127.0.0.1:{}".format(PORT),
     FLASK_ENV = 'production',
-    SECRET_KEY='vnkdjnfjknfl1232#'
+    SECRET_KEY=os.environ.get("FLASK_SOCKET_IO_SECRET_KEY")
 )
 sio = SocketIO(app)
 
