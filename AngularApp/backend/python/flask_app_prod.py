@@ -50,7 +50,7 @@ def map_game():
     use = True
 
     # Add a message
-    resp.message("Moving Marker")
+    # resp.message("Moving Marker")
 
     return str(resp)
 

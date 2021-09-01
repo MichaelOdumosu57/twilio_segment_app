@@ -183,6 +183,11 @@ Session 5 (Logging)
 ## Snippets
 * general snippets found in planning in the trello workspace
 
+* start flask app with eventlet
+```ps1
+web: gunicorn --worker-class eventlet -w 1 flask_app_prod:app
+```
+
 ## Media 
 <!-- bunch of links -->
 

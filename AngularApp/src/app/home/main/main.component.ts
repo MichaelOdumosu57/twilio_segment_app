@@ -222,6 +222,37 @@ export class MainComponent  {
         // poll the direction endpoint to see which endpoint our marker should go
             // once we get to the destination then ok
 
+        clientIo.on("direction",(devObj)=>{
+            let result =devObj.data
+            let current = ryber.googleMaps.marker.getPosition()
+            let lat = current.lat()
+            let lng = current.lng()
+            if(result !== "waiting"){
+                analytics.track(result)
+            }
+
+            switch (result.trim().toLowerCase()) {
+                case "up":
+                    lat += .0005
+                    break;
+
+                case "down":
+                    lat -= .0005
+                    break;
+
+                case "left":
+                    lng -= .0005
+                    break;
+
+                case "right":
+                    lng += .0005
+                    break;
+
+                default:
+                    break;
+            }
+            ryber.googleMaps.marker.setPosition({lat,lng})
+        })
             let pollEvent = ryber.http.get(
                 env.backend.url + "/direction",
                 {responseType:"text"}
