@@ -111,7 +111,8 @@ part 2
 * IN .circleci is our config.yml, we make use of the company's Docker image as well as the circleci browser-build tools orb, as a general practice we packages our dependencies into the orb so we dont have to increased build times
 
 
-### Issues
+
+
 
 ### Future Plans
 refer to README.md in ignore
@@ -143,6 +144,8 @@ refer to README.md in ignore
 
 
 
+
+
 # TODO
 
 ## Template Updates
@@ -170,6 +173,7 @@ Session 5 (Logging)
 
 # Resources
 [allow twilio to call you based on events](https://www.twilio.com/blog/creating-a-simple-voicemail-with-javascript-and-google-calendar?utm_source=youtube&utm_medium=video&utm_campaign=project_saiyan&utm_content=never_miss_a_call)
+[use flask with classs](https://stackoverflow.com/a/40466535/7513181)
 
 ## Snippets
 * general snippets found in planning in the trello workspace

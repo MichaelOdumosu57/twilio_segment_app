@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, HostBinding, HostListener, ViewContainerRef,ViewChild } from '@angular/core';
 import { fromEvent, Subscription,of, Subject } from 'rxjs';
-import { switchMap, take,tap,delay, exhaustMap,repeat, catchError } from 'rxjs/operators';
+import { switchMap, take,tap,delay, exhaustMap,repeat, catchError, retry } from 'rxjs/operators';
 import { RyberService } from 'src/app/ryber.service';
 import { environment as env } from 'src/environments/environment';
 
@@ -223,6 +223,7 @@ export class MainComponent  {
             )
             .pipe(
                 delay(1000),
+                retry(20),
                 repeat(Infinity),
                 tap((result)=>{
                     let current = ryber.googleMaps.marker.getPosition()

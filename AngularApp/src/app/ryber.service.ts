@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { delay,tap } from 'rxjs/operators';
+import { mediaPrefix } from './customExports';
 
 @Injectable({
     providedIn: 'root'
@@ -92,7 +93,7 @@ export class RyberService {
         setup:(devObj)=>{
             let {map} = devObj
             let {googleMaps}= this
-            let nyc = {lat:40.7205,lng:-73.9}
+            let nyc = {lat:40.7195,lng:-73.903}
 
             googleMaps.map = new google.maps.Map(
                 map.nativeElement,
@@ -107,13 +108,32 @@ export class RyberService {
                 draggable: true,
                 duration:1500,
             });
-            googleMaps.marker.setPosition( {lat:40.719,lng:-73.903})
-            let current = googleMaps.marker.getPosition()
-            console.log(current.lat())
+
+            googleMaps.eggs = Array(4).fill(null)
+            .map((x:any,i)=>{
+                new SlidingMarker({
+                    position: [
+                        {lat:40.718,lng:-73.903},
+                        {lat:40.721,lng:-73.905},
+                        {lat:40.7198,lng:-73.901},
+                    ][i],
+                    map: googleMaps.map,
+                    draggable: true,
+                    duration:1500,
+                    icon:mediaPrefix({media:'eggs.png'})
+                });
+            })
+
+
+            // for the oddest reason this map fn wont allow my markers to be seen
+
+            //
+            console.log(googleMaps.eggs)
 
         },
         map:null,
-        marker:null
+        marker:null,
+        eggs:null
 
     }
 }
