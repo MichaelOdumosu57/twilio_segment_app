@@ -1,9 +1,7 @@
 export const environment = {
     production: true,
     startURL:"/",
-    googleMaps:{
-        apiKey:"AIzaSyBGRcFDS9q6DjjutDkQlshOItikFxnYjIs"
-    },
+
     backend:{
         url: "https://twilio-segment-app.herokuapp.com",
     },

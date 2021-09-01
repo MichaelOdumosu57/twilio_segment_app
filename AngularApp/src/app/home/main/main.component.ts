@@ -254,6 +254,10 @@ export class MainComponent  {
                             break;
                     }
                     ryber.googleMaps.marker.setPosition({lat,lng})
+                }),
+                catchError((err)=>{
+                    alert("There seems to be any issue with the app try again later")
+                    return of({})
                 })
             )
             .subscribe()

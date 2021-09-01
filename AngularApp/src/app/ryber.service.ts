@@ -111,7 +111,7 @@ export class RyberService {
 
             googleMaps.eggs = Array(4).fill(null)
             .map((x:any,i)=>{
-                new SlidingMarker({
+                return new SlidingMarker({
                     position: [
                         {lat:40.718,lng:-73.903},
                         {lat:40.721,lng:-73.905},

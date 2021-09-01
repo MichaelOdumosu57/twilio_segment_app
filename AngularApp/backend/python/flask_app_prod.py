@@ -4,7 +4,7 @@ if sys.platform == "win32":
 elif sys.platform =="linux":
     sys.path.append(sys.path[0] + "/site-packages/linux")
 from flask import Flask, request, redirect
-
+import os
 
 # dev additions
 from twilio.twiml.messaging_response import MessagingResponse
@@ -12,13 +12,14 @@ from twilio.twiml.messaging_response import MessagingResponse
 
 app = Flask(__name__)
 app.config.update(
-    SERVER_NAME="127.0.0.1:3005"
+    SERVER_NAME="127.0.0.1:3005",
+    FLASK_ENV = 'production'
 )
 
 
 @app.after_request
 def after_request(response):
-    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Origin', os.environ.get('FRONTEND_ORIGIN'))
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
     return response
