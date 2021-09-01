@@ -14,7 +14,7 @@ app = Flask(__name__)
 PORT = os.environ.get("PORT")
 PORT = PORT if PORT else 3005
 app.config.update(
-    SERVER_NAME="127.0.0.1:{}".format(PORT),
+    # SERVER_NAME="127.0.0.1:{}".format(PORT),
     FLASK_ENV = 'production'
 )
 

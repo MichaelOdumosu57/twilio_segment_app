@@ -223,7 +223,7 @@ export class MainComponent  {
             )
             .pipe(
                 delay(1000),
-                retry(20),
+                retry(5),
                 repeat(Infinity),
                 tap((result)=>{
                     let current = ryber.googleMaps.marker.getPosition()
