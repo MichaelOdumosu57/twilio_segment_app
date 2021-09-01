@@ -5,7 +5,7 @@ elif sys.platform =="linux":
     sys.path.append(sys.path[0] + "/site-packages/linux")
 from flask import Flask, request, redirect
 import os
-from flask_sio import SocketIO
+from flask_socketio import SocketIO
 
 # dev additions
 from twilio.twiml.messaging_response import MessagingResponse
