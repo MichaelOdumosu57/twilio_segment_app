@@ -265,8 +265,8 @@ export class MainComponent  {
                     return of({})
                 })
             )
-            .subscribe()
-            subs.push(pollEvent)
+            // .subscribe()
+            // subs.push(pollEvent)
         //
     }
 
