@@ -174,7 +174,7 @@ Session 5 (Logging)
 # Resources
 [allow twilio to call you based on events](https://www.twilio.com/blog/creating-a-simple-voicemail-with-javascript-and-google-calendar?utm_source=youtube&utm_medium=video&utm_campaign=project_saiyan&utm_content=never_miss_a_call)
 [use flask with classs](https://stackoverflow.com/a/40466535/7513181)
-
+[deploy flask app to heroku](https://www.youtube.com/watch?v=Li0Abz-KT78)
 ## Snippets
 * general snippets found in planning in the trello workspace
 

@@ -1,2 +1,2 @@
-web: python flask_app_prod.py 0.0.0.0:\$PORT
+web: gunicorn app:flask_app_prod.py 
 heroku ps:scale web=1
