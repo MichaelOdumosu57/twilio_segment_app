@@ -58,5 +58,5 @@ def get_dir():
 
 
 # if __name__ == "__main__":
-def start_app():
-    app.run(debug=True)
+# def start_app():
+#     app.run(debug=True)
