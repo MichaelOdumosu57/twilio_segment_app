@@ -46,7 +46,7 @@ def map_game():
     global current
     global use
     current = body
-    sio.emit(current)
+    sio.emit('direction',current)
     use = True
 
     # Add a message
